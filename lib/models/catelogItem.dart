@@ -1,16 +1,7 @@
 
-class CatelogModel{
- static final Items = [
-    Item(
-        id: 1,
-        name: 'Galexy f41',
-        desc: 'my mobile samsung galaxy f41',
-        price: 900,
-        image:
-        'https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg')
-  ];
+class CatelogModel {
+  static var Items;
 }
-
 class Item {
   final int id;
   final String name;
@@ -20,6 +11,29 @@ class Item {
   final String image;
 
   Item({this.id, this.name, this.desc, this.price, this.color, this.image});
+
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return new Item(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      desc: map['desc'] as String,
+      price: map['price'] as num,
+      color: map['color'] as String,
+      image: map['image'] as String,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    // ignore: unnecessary_cast
+    return {
+      'id': this.id,
+      'name': this.name,
+      'desc': this.desc,
+      'price': this.price,
+      'color': this.color,
+      'image': this.image,
+    } as Map<String, dynamic>;
+  }
 }
 
 
